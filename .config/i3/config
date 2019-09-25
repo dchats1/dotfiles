@@ -3,7 +3,7 @@
 
 set $mod Mod4
 
-font pango:monospace 8
+font pango:monospace 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -121,6 +121,7 @@ exec --no-startup-id feh --bg-scale ~/Pictures/road-background.jpg
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #a80000 #a80000 #ffffff #2e9ef4   #285577
+#client.focused          #a80000 #a80000 #ffffff #00ff00   #285577
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
