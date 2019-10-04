@@ -17,6 +17,9 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 
+# Open Firefox
+bindsym $mod+Shift+f exec firefox
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -97,21 +100,26 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 2 px or 2 ppt
+        bindsym k resize grow height 2 px or 2 ppt
+        bindsym l resize shrink height 2 px or 2 ppt
+        bindsym semicolon resize grow width 2 px or 2 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Down resize grow height 2 px or 2 ppt
+        bindsym Up resize shrink height 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+# Window borders:
+
+default_border pixel 2
+default_floating_border pixel 2
 
 bindsym $mod+r mode "resize"
 
@@ -120,16 +128,16 @@ bindsym $mod+Escape exec i3lock -c 000000 -i ~/Pictures/panic.png
 exec --no-startup-id feh --bg-scale ~/Pictures/road-background.jpg
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #a80000 #a80000 #ffffff #2e9ef4   #285577
-#client.focused          #a80000 #a80000 #ffffff #00ff00   #285577
+#client.focused          #a80000 #a80000 #ffffff #2e9ef4   #285577
+client.focused          #a80800 #a80800 #ffffff #00ff00   #a80800
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-#exec --no-startup-id /usr/share/powerline/i3/powerline-i3.py
 bar {
         status_command i3status --config ~/.config/i3/i3status.conf
       	position top
+        tray_output primary
       	colors {
 		      focused_workspace #a80800 #a80800 #ffffff
 	      }
@@ -149,6 +157,6 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
