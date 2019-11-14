@@ -46,10 +46,8 @@
 .python_history
 .screenrc
 .ssh/*
-.tmux.conf
 .vim/*
 .viminfo
-.vimrc
 .xsession-errors
 .xsession-errors.old
 .zcompdump

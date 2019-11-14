@@ -125,9 +125,9 @@ default_floating_border pixel 2
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+Escape exec i3lock -c 000000 -i ~/Pictures/panic.png
+bindsym $mod+Escape exec i3lock -c 000000 -i ~/Pictures/fedora.png
 
-exec --no-startup-id feh --bg-scale ~/Pictures/road-background.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/Sidelined_LandscapeMt_Cook_New_Zealand.jpg
 
 # class                 border  backgr. text    indicator child_border
 #client.focused          #a80000 #a80000 #ffffff #2e9ef4   #285577
