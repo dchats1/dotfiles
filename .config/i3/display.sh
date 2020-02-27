@@ -1,14 +1,9 @@
 #!/bin/bash
 
-monitor1=`xrandr | grep ' connected' | grep primary | awk '{print $1}'`
-monitor2=`xrandr | grep ' connected' | grep -v primary | awk '{print $1}'`
+num_of_monitors=`xrandr | grep ' connected' | wc -l`
 
-if ! [ -z "$monitor2" ]; then
-  xrandr --output $monitor2 --auto --above $monitor1 
+if [ "$num_of_monitors" -eq 3 ]; then # Desk layout
+  xrandr --output DP2-1 --primary --auto --output DP2-2 --auto --right-of DP2-1 --output eDP1 --off
+else # Revert to laptop
+  xrandr --output eDP1 --primary --auto
 fi
-
-for i in `xrandr | grep disconnected | awk '{print $1}'`; do 
-  xrandr --output $i --off
-done
-
-feh --bg-scale ~/Pictures/road-background.jpg
