@@ -18,15 +18,6 @@ export PATH
 # User specific aliases and functions
 alias homevpn="sudo openvpn --config ~/Documents/VPN/thedavid-center-client.ovpn"
 
-# Powerline Settings
-#if [ -f `which powerline-daemon` ]; then
-#  powerline-daemon -q
-#  POWERLINE_BASH_CONTINUATION=1
-#  POWERLINE_BASH_SELECT=1
-#  . /usr/share/powerline/bash/powerline.sh
-#fi
-# vim: ft=sh
-
 # No brainer, default to Vim
 export EDITOR="vim"
 
@@ -39,6 +30,7 @@ export LSCOLOR=""
 export PATH=$HOME/bin:$PATH
 
 # get current branch in git repo
+# Functions from: https://github.com/linuxacademy/content-python3-sysadmin/tree/master/helpers
 function parse_git_branch() {
   BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
   if [ ! "${BRANCH}" == "" ]
@@ -86,6 +78,3 @@ function parse_git_dirty {
 }
 
 export PS1=" \[\e[36m\]\W\[\e[m\]\[\e[32m\]\`parse_git_branch\`\[\e[m\] $ "
-
-# User specific aliases and functions
-alias homevpn="sudo openvpn --config ~/Documents/VPN/thedavid-center-client.ovpn"
