@@ -20,6 +20,9 @@ bindsym $mod+d exec dmenu_run
 # Open Firefox
 bindsym $mod+Shift+f exec firefox
 
+# Rerun display script
+bindsym $mod+Shift+d exec --no-startup-id ~/.config/i3/display.sh
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down

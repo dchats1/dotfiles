@@ -1,9 +1,15 @@
 #!/bin/bash
 
-num_of_monitors=`xrandr | grep ' connected' | wc -l`
+num_of_monitors=`xrandr | awk '/^eDP.* connected|^DP.* connected/{ print $1 }'| wc -l`
+laptop_screen=`xrandr | awk '/^eDP/{ print $1 }'`
 
-if [ "$num_of_monitors" -eq 3 ]; then # Desk layout
-  xrandr --output DP2-1 --primary --auto --output DP2-2 --auto --right-of DP2-1 --output eDP1 --off
-else # Revert to laptop
-  xrandr --output eDP1 --primary --auto
+mon1=`xrandr | awk '/^DP.* connected/{ print $1 }'| head -1`
+mon2=`xrandr | awk '/^DP.* connected/{ print $1 }'| tail -1`
+
+# Desk layout
+if [ "$num_of_monitors" -eq 3 ]; then
+  xrandr --output $mon1 --primary --auto --output $mon2 --auto --right-of $mon1 --output $laptop_screen --off
+# Revert to laptop screen
+else
+  xrandr --output $laptop_screen --primary --auto
 fi
