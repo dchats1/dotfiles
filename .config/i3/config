@@ -128,7 +128,7 @@ default_floating_border pixel 1
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+Escape exec i3lock -c 000000 -i ~/Pictures/fedora.png
+bindsym $mod+Escape exec i3lock -c 000000 -i ~/Pictures/fedora.png -t
 
 exec --no-startup-id feh --bg-scale /home/dchatterton/Pictures/Sidelined_LandscapeMt_Cook_New_Zealand.jpg
 
