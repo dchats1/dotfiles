@@ -147,6 +147,7 @@ bar {
 
 exec_always --no-startup-id ~/.config/i3/alternating_layouts.py
 exec_always --no-startup-id ~/.config/i3/display.sh
+exec_always --no-startup-id /usr/bin/redshift -Po -t 5800:5500
 exec --no-startup-id xcompmgr
 exec --no-startup-id pasystray
 exec --no-startup-id nm-applet
