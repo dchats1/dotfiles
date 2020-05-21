@@ -3,7 +3,11 @@
 import XMonad
 import Data.Monoid
 import System.Exit
+import XMonad.Actions.WorkspaceNames
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
 import XMonad.Util.SpawnOnce
+import XMonad.Util.Run (spawnPipe)
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -175,7 +179,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -184,7 +188,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
      nmaster = 1
 
      -- Default proportion of screen occupied by master pane
-     ratio   = 1/2
+     ratio   = 4/7
 
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
@@ -227,7 +231,7 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+myLogHook = workspaceNamesPP xmobarPP >>= dynamicLogString >>= xmonadPropLog
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -241,6 +245,7 @@ myLogHook = return ()
 myStartupHook = do
         spawnOnce "~/dotfiles/display.sh &"
         spawnOnce "feh --bg-scale ~/Pictures/Sidelined_LandscapeMt_Cook_New_Zealand.jpg &"
+        spawnOnce "pasystray &"
         spawnOnce "xcompmgr &"
         spawnOnce "xfce4-power-manager &"
         spawnOnce "nm-applet &"
@@ -251,7 +256,10 @@ myStartupHook = do
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = xmonad defaults
+main = do
+    xmproc <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobarrc"
+    xmproc <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobarrc"
+    xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
