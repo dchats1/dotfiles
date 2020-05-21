@@ -26,9 +26,8 @@ Config { font = "xft:Monospace Regular:pixelsize=12:antialias=true:hinting=true"
                     , Run Com "uname" ["-s","-r"] "" 36000
                     , Run Date "%a %b %_d %Y %H:%M" "date" 10
 										, Run XMonadLog
-                    , Run Com "~/.xmonad/trayer-width-to-spaces" [] "trayer" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% }{%multicpu% | %memory% | %swap% | <fc=#ee9a00>%date%</fc>  %trayer%"
+       , template = "%XMonadLog% }{%multicpu% | %memory% | %swap% | <fc=#ee9a00>%date%</fc>"
        }
