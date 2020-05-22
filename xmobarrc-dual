@@ -20,7 +20,7 @@ Config { font = "xft:Monospace Regular:pixelsize=12:antialias=true:hinting=true"
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 10
+                             ] 20
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Com "uname" ["-s","-r"] "" 36000
