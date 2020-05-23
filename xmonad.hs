@@ -79,7 +79,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     -- Allow bar to be covered by window
-    , ((modm, xK_b                   ), sendMessage ToggleStruts)
+    , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    -- Lock screen
+    , ((modm .|. shiftMask, xK_l     ), spawn "i3lock -c 000000 -t -i ~/Pictures/fedora.png" )
     ]
     ++
 
