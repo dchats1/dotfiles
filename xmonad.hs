@@ -82,6 +82,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_b     ), sendMessage ToggleStruts)
     -- Lock screen
     , ((modm .|. shiftMask, xK_l     ), spawn "i3lock -c 000000 -t -i ~/Pictures/fedora.png" )
+    -- Lock screen and Suspend
+    , ((modm .|. shiftMask, xK_s     ), spawn "i3lock -c 000000 -t -i ~/Pictures/fedora.png && systemctl suspend" )
     ]
     ++
 
