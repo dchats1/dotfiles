@@ -2,6 +2,7 @@
 import XMonad
 import Data.Monoid
 import System.Exit
+import Graphics.X11.ExtraTypes.XF86
 import XMonad.Actions.WorkspaceNames
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
@@ -84,6 +85,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_l     ), spawn "i3lock -c 000000 -t -i ~/Pictures/fedora.png" )
     -- Lock screen and Suspend
     , ((modm .|. shiftMask, xK_s     ), spawn "i3lock -c 000000 -t -i ~/Pictures/fedora.png && systemctl suspend" )
+    -- Volume Controls
+    , ((0, xF86XK_AudioMute          ), spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
+    , ((0, xF86XK_AudioLowerVolume   ), spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
+    , ((0, xF86XK_AudioRaiseVolume   ), spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
+
     ]
     ++
 
