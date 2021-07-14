@@ -14,5 +14,5 @@ if [ "$num_of_monitors" -eq 3 ]; then # Desk layout
 else # Revert to laptop
   trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 4 --transparent true --alpha 0 --tint 0x000000 --height 16 --monitor 0 &
   xrandr --output $laptop_screen --primary --auto
-  xmobar -x 0 ~/.xmonad/xmobarrc &
+  xmobar -x 0 ~/.config/xmobarrc &
 fi
