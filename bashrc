@@ -16,7 +16,7 @@ export PATH
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-alias homevpn="sudo openvpn --config ~/Documents/VPN/thedavid-center-client.ovpn"
+unset RPS1
 
 # No brainer, default to Vim
 export EDITOR="vim"
