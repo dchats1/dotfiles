@@ -158,4 +158,5 @@ if [ -f /run/.containerenv ]; then
   fi
 fi
 
+PATH=$PATH:/var/home/dchatterton/.local/bin
 export PS1=" \[\e[36m\]\W\[\e[m\]\[\033[38;5;160m\]$TOOLBOX_NAME\[\e[32m\]\`parse_git_branch\`\[\e[m\] $ "
