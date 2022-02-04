@@ -152,7 +152,7 @@ function parse_git_dirty {
 # Get toolbox name
 # source kubectl completion if kube toolbox
 if [ -f /run/.containerenv ]; then
-  TOOLBOX_NAME=[$(cat /run/.containerenv | grep 'name=' | sed -e 's/^name="\(.*\)"$/\1/')]
+  TOOLBOX_NAME=[$(grep -Po '(?<=^name=")([^"]*)' /run/.containerenv)]
   if [ $TOOLBOX_NAME = "kube" ]; then
     source <(kubectl completion bash)
   fi
