@@ -5,6 +5,22 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+SHELL=/bin/bash
+# Only display echos from profile.d scripts if we are no login shell
+# and interactive - otherwise just process them to set envvars
+for i in /etc/profile.d/*.sh; do
+    if [ -r "$i" ]; then
+        if [ "$PS1" ]; then
+            . "$i"
+        else
+            . "$i" >/dev/null
+        fi
+    fi
+done
+
+unset i
+unset -f pathmunge
+
 ##### User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
