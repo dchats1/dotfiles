@@ -1,9 +1,33 @@
-set t_Co=256
-colo desert
-set autoindent
+" Disable compatibility with vi which can cause unexpected issues.
+set nocompatible
+
+" Disable Swap files because they annoy me
 set noswapfile
-" Global tab width.
+
+" Tab settings
+set autoindent
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+
+" Show Line Numbers
+set number
+
+" Enable Syntax Highlighting
+syntax on
+
+" Preferred color scheme
+colorscheme desert
+
+" Respect termal background color
+highlight Normal ctermbg=none
+
+" Cursor Settings
+set cursorline
+highlight CursorLine cterm=NONE ctermbg=darkgrey
+
+"Status Bar
+set laststatus=2
+set showmode
+set showcmd

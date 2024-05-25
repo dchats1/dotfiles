@@ -1,4 +1,4 @@
-.PHONY: bash
+.PHONY: bash vim
 
 backup:
 	# TODO backup dotfiles with a date
@@ -9,3 +9,4 @@ bash:
 tmux:
 
 vim:
+	stow -v --dotfiles --target=${HOME} vim
