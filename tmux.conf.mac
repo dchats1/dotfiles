@@ -1,5 +1,0 @@
-run-shell "powerline-daemon -q"
-source "/Users/dchatterton/Library/Python/3.7/lib/python/site-packages/powerline/bindings/tmux/powerline.conf"
-set -g default-shell /usr/local/bin/bash
-set-option -g history-limit 5000
-set-window-option -g mode-keys vi
