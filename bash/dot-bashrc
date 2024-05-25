@@ -106,7 +106,7 @@ fi
 # Get toolbox name
 # source kubectl completion if kube toolbox
 if [ -f /run/.containerenv ]; then
-  TOOLBOX_NAME=[$(grep -Po '(?<=^name=")([^"]*)' /run/.containerenv)]
+  TOOLBOX_NAME=" [$(grep -Po '(?<=^name=\")([^\"]*)' /run/.containerenv)]"
   if [ $TOOLBOX_NAME = "[kube]" ]; then
     source <(kubectl completion bash)
   fi
@@ -116,4 +116,4 @@ PATH=$PATH:/var/home/dchatterton/.local/bin
 GIT_PS1_SHOWDIRTYSTATE="true"
 GIT_PS1_SHOWCOLORHINTS="true"
 GIT_PS1_SHOWUNTRACKEDFILES="true"
-PS1=' \[\e[36m\]\W\[\e[m\]\[\033[38;5;160m\]$TOOLBOX_NAME\e[m$(__git_ps1 "\e[32m[\e[m%s\e[32m]\e[m")\$ '
+PS1=' \[\e[36m\]\W\[\e[m\]\[\033[38;5;160m\]$TOOLBOX_NAME\e[m $(__git_ps1 "\e[32m[\e[m%s\e[32m] \e[m")\$ '
