@@ -93,6 +93,10 @@ if [ -f $HOME/.git-prompt ]; then
   source $HOME/.git-prompt
 fi
 
+# Source fzf --bash if installed
+
+[[ -f "/usr/bin/fzf" ]] && eval "$(fzf --bash)"
+
 # Get toolbox name
 # source kubectl completion if kube toolbox
 if [ -f /run/.containerenv ]; then
