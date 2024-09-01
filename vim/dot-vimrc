@@ -27,8 +27,24 @@ highlight Normal ctermbg=none
 set cursorline
 highlight CursorLine cterm=NONE ctermbg=darkgrey
 
-"Status Bar
-set laststatus=2
+" FZF Settings
+set rtp+=/usr/bin/fzf
+noremap <C-f> :FZF<CR>
+let g:fzf_action = { 'enter': 'tab split' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Normal'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " Remap Leader
 let mapleader = ","
@@ -51,7 +67,6 @@ noremap <leader>0 :tablast<cr>
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 let NERDTreeCustomOpenArgs={'file':{'where': 't'}} " Open new files in tab by default
 
 function! GitBranch()
@@ -62,6 +77,9 @@ function! StatuslineGit()
   let l:branchname = GitBranch()
   return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
+
+"Status Bar
+set laststatus=2
 
 set statusline=
 set statusline+=%#Pmenu#
