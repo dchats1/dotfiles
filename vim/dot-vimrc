@@ -29,9 +29,30 @@ highlight CursorLine cterm=NONE ctermbg=darkgrey
 
 "Status Bar
 set laststatus=2
-"set statusline=
-"set statusline+=%#LineNr#
-"set statusline+=\ %f
+
+" Remap Leader
+let mapleader = ","
+
+" Tab Navigation
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+"NERDTree Settings
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+let NERDTreeCustomOpenArgs={'file':{'where': 't'}} " Open new files in tab by default
 
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
