@@ -6,6 +6,8 @@ if [ -f $HOME/.git-prompt ]; then
   source $HOME/.git-prompt
 fi
 
+shopt -s histappend
+
 # Source fzf --bash if installed
 [[ -f "/usr/bin/fzf" ]] && eval "$(fzf --bash)"
 
