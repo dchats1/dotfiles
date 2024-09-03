@@ -78,6 +78,11 @@ function! StatuslineGit()
   return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
 
+"Tab Bar
+highlight TabLineFill ctermfg=Black ctermbg=Black
+highlight TabLine ctermfg=Yellow ctermbg=Black
+highlight TabLineSel ctermfg=Black ctermbg=Cyan
+
 "Status Bar
 set laststatus=2
 
