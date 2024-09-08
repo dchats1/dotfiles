@@ -14,3 +14,7 @@ vim_plugins:
 		git clone https://github.com/preservim/nerdtree.git ${HOME}/.vim/pack/vendor/start/nerdtree; \
 		vim -u NONE -c "helptags ${HOME}/.vim/pack/vendor/start/nerdtree/doc" -c q; \
 	fi
+	if [ ! -d ${HOME}/.vim/pack/vendor/start/AutoComplPop/ ]; then \
+		git clone https://github.com/vim-scripts/AutoComplPop.git ${HOME}/.vim/pack/vendor/start/AutoComplPop; \
+		vim -u NONE -c "helptags ${HOME}/.vim/pack/vendor/start/AutoComplPop/doc" -c q; \
+	fi
