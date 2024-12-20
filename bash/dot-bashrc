@@ -1,85 +1,3 @@
-### START Fedora defaults
-# Prevent doublesourcing
-if [ -z "$BASHRCSOURCED" ]; then
-  BASHRCSOURCED="Y"
-
-  # are we an interactive shell?
-  if [ "$PS1" ]; then
-    if [ -z "$PROMPT_COMMAND" ]; then
-      declare -a PROMPT_COMMAND
-      case $TERM in
-      xterm*)
-        if [ -e /etc/sysconfig/bash-prompt-xterm ]; then
-            PROMPT_COMMAND=/etc/sysconfig/bash-prompt-xterm
-        else
-            PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-        fi
-        ;;
-      screen*)
-        if [ -e /etc/sysconfig/bash-prompt-screen ]; then
-            PROMPT_COMMAND=/etc/sysconfig/bash-prompt-screen
-        else
-            PROMPT_COMMAND='printf "\033k%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
-        fi
-        ;;
-      *)
-        [ -e /etc/sysconfig/bash-prompt-default ] && PROMPT_COMMAND=/etc/sysconfig/bash-prompt-default
-        ;;
-      esac
-    fi
-    # Turn on parallel history
-    shopt -s histappend
-    # Turn on checkwinsize
-    shopt -s checkwinsize
-    # Change the default prompt string
-    [ "$PS1" = "\\s-\\v\\\$ " ] && PS1="[\u@\h \W]\\$ "
-    # You might want to have e.g. tty in prompt (e.g. more virtual machines)
-    # and console windows
-    # If you want to do so, just add e.g.
-    # if [ "$PS1" ]; then
-    #   PS1="[\u@\h:\l \W]\\$ "
-    # fi
-    # to your custom modification shell script in /etc/profile.d/ directory
-  fi
-
-  if ! shopt -q login_shell ; then # We're not a login shell
-    # Need to redefine pathmunge, it gets undefined at the end of /etc/profile
-    pathmunge () {
-        case ":${PATH}:" in
-            *:"$1":*)
-                ;;
-            *)
-                if [ "$2" = "after" ] ; then
-                    PATH=$PATH:$1
-                else
-                    PATH=$1:$PATH
-                fi
-        esac
-    }
-
-    # Set default umask for non-login shell only if it is set to 0
-    [ `umask` -eq 0 ] && umask 022
-
-    SHELL=/bin/bash
-    # Only display echos from profile.d scripts if we are no login shell
-    # and interactive - otherwise just process them to set envvars
-    for i in /etc/profile.d/*.sh; do
-        if [ -r "$i" ]; then
-            if [ "$PS1" ]; then
-                . "$i"
-            else
-                . "$i" >/dev/null
-            fi
-        fi
-    done
-
-    unset i
-    unset -f pathmunge
-  fi
-
-fi
-### END Fedora defaults
-
 # No brainer, default to Vim
 export EDITOR="vim"
 
@@ -97,7 +15,16 @@ shopt -s histappend
 alias ll='ls -l --color=auto'
 alias g='git'
 alias k='kubectl'
-alias session='tmux new -s $(git rev-parse --show-toplevel | awk -F "/" "{print $NF}")'
+
+# Functions
+function session() {
+  SESSION_NAME="$(git rev-parse --show-toplevel | awk -F "/" '{print $NF}')"
+  tmux new -s $SESSION_NAME -d
+  tmux rename-window vim
+  tmux split-window -t $SESSION_NAME -p 15
+  tmux select-pane -t 0
+  tmux attach -t $SESSION_NAME
+}
 
 # Get toolbox name for prompt
 # source kubectl completion if kube toolbox
@@ -110,8 +37,14 @@ fi
 
 PATH=$PATH:/var/home/dchatterton/.local/bin
 
+# Prompt Colors
+cyan='\[\e[36m\]'
+reset='\[\e[m\]'
+toolbox_color='\[\033[38;5;160m\]'
+green='\[\e[32m\]'
+
 # Prompt Settings
 GIT_PS1_SHOWDIRTYSTATE="true"
 GIT_PS1_SHOWCOLORHINTS="true"
 GIT_PS1_SHOWUNTRACKEDFILES="true"
-PS1=' \[\e[36m\]\W \[\e[m\]\[\033[38;5;160m\]$TOOLBOX_NAME\e[m$(__git_ps1 "\e[32m[\e[m%s\e[32m]\e[m")\$ '
+PS1=" ${cyan}\W${reset} ${toolbox_color}$TOOLBOX_NAME${reset}$(__git_ps1 "${green}[\e[m%s${green}]\e[m")\$ "
