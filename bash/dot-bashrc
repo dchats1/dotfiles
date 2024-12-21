@@ -18,13 +18,18 @@ alias k='kubectl'
 
 # Functions
 function session() {
-  SESSION_NAME="$(git rev-parse --show-toplevel | awk -F "/" '{print $NF}')"
-  tmux new -s $SESSION_NAME -d
-  tmux rename-window vim
-  tmux split-window -t $SESSION_NAME -p 15
-  tmux select-pane -t 0
-  tmux respawn-pane -t $SESSION_NAME:0 -k 'vim .'
-  tmux attach -t $SESSION_NAME
+  git_repo=$(git rev-parse --show-toplevel 2>/dev/null) 
+  if [ $? -ne '0' ]; then
+    echo "Not a git repo"
+  else
+    SESSION_NAME="$(git rev-parse --show-toplevel | awk -F "/" '{print $NF}')"
+    tmux new -s $SESSION_NAME -d
+    tmux rename-window vim
+    tmux split-window -t $SESSION_NAME -p 20
+    tmux select-pane -t 0
+    tmux respawn-pane -t $SESSION_NAME:0 -k 'vim .'
+    tmux attach -t $SESSION_NAME
+  fi
 }
 
 # Get toolbox name for prompt
