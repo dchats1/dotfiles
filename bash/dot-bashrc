@@ -23,6 +23,7 @@ function session() {
   tmux rename-window vim
   tmux split-window -t $SESSION_NAME -p 15
   tmux select-pane -t 0
+  tmux respawn-pane -t $SESSION_NAME:0 -k 'vim .'
   tmux attach -t $SESSION_NAME
 }
 
@@ -47,4 +48,4 @@ green='\[\e[32m\]'
 GIT_PS1_SHOWDIRTYSTATE="true"
 GIT_PS1_SHOWCOLORHINTS="true"
 GIT_PS1_SHOWUNTRACKEDFILES="true"
-PS1=" ${cyan}\W${reset} ${toolbox_color}$TOOLBOX_NAME${reset}$(__git_ps1 "${green}[\e[m%s${green}]\e[m")\$ "
+PS1=" ${cyan}\W${reset} ${toolbox_color}$TOOLBOX_NAME${reset}$(__git_ps1 [%s])\$ "
