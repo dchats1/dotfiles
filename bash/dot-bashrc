@@ -1,12 +1,12 @@
 # No brainer, default to Vim
 export EDITOR="vim"
 
-# Source Git Prompt
-if [ -f $HOME/.git-prompt ]; then
-  source $HOME/.git-prompt
-fi
-
 shopt -s histappend
+
+# Source Git Prompt
+if [ -f $HOME/.git-prompt.sh ]; then
+  source $HOME/.git-prompt.sh
+fi
 
 # Source fzf --bash if installed
 [[ -f "/usr/bin/fzf" ]] && eval "$(fzf --bash)"
@@ -48,4 +48,4 @@ green='\[\e[32m\]'
 GIT_PS1_SHOWDIRTYSTATE="true"
 GIT_PS1_SHOWCOLORHINTS="true"
 GIT_PS1_SHOWUNTRACKEDFILES="true"
-PS1=" ${cyan}\W${reset} ${toolbox_color}$TOOLBOX_NAME${reset}$(__git_ps1 [%s])\$ "
+PS1=' \[\e[36m\]\W\[\e[m\] \[\033[38;5;160m\]$TOOLBOX_NAME\[\e[m\]$(__git_ps1 ["%s"])\$ '
