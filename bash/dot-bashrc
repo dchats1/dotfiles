@@ -15,6 +15,7 @@ fi
 alias ll='ls -l --color=auto'
 alias g='git'
 alias k='kubectl'
+alias yt-dlp-best='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
 
 # Functions
 function session() {
