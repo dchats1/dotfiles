@@ -69,6 +69,13 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 let NERDTreeCustomOpenArgs={'file':{'where': 't'}} " Open new files in tab by default
 
+"VimWiki Settings
+filetype plugin on
+
+let g:vimwiki_list = [{'path': '~/Nextcloud/vimwiki/',
+                      \ 'syntax': 'markdown',
+                      \ 'ext': 'md'}]
+
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
