@@ -25,7 +25,7 @@ highlight Normal ctermbg=none
 
 " Cursor Settings
 set cursorline
-highlight CursorLine cterm=NONE ctermbg=darkgrey
+"highlight CursorLine cterm=NONE ctermbg=darkgrey
 
 " FZF Settings
 set rtp+=/usr/bin/fzf
