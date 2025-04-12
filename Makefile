@@ -1,4 +1,4 @@
-.PHONY: bash tmux vim vim_plugins
+.PHONY: bash plugins tmux update vim
 
 bash:
 	stow -v --dotfiles --target=${HOME} bash
@@ -11,6 +11,15 @@ tmux:
 
 vim:
 	stow -v --dotfiles --target=${HOME} vim
+
+PLUGIN_PATH := ${HOME}/.vim/pack/vendor/start/
+PLUGINS := $(shell ls ${HOME}/.vim/pack/vendor/start/)
+
+update:
+	@for plug in ${PLUGINS}; do \
+		echo "Updating $$plug..."; \
+		cd ${HOME}/.vim/pack/vendor/start/$$plug && git pull; \
+	done
 
 plugins:
 	# NerdTREE
