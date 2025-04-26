@@ -37,13 +37,3 @@ plugins:
 	  git clone https://github.com/vimwiki/vimwiki.git ${HOME}/.vim/pack/vendor/start/vimwiki; \
 		vim -u NONE -c "helptags ${HOME}/.vim/pack/vendor/start/vimwiki/doc" -c q; \
 	fi
-	# mim-lsp
-	if [ ! -d ${HOME}/.vim/pack/vendor/start/vim-lsp/ ]; then \
-	  git clone https://github.com/prabirshrestha/vim-lsp.git ${HOME}/.vim/pack/vendor/start/vim-lsp; \
-		vim -u NONE -c "helptags ${HOME}/.vim/pack/vendor/start/vim-lsp/doc" -c q; \
-	fi
-	# vim-lsp-settings
-	if [ ! -d ${HOME}/.vim/pack/vendor/start/vim-lsp-settings/ ]; then \
-	  git clone https://github.com/mattn/vim-lsp-settings.git ${HOME}/.vim/pack/vendor/start/vim-lsp-settings; \
-		vim -u NONE -c "helptags ${HOME}/.vim/pack/vendor/start/vim-lsp-settings/doc" -c q; \
-	fi
