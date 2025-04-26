@@ -62,9 +62,7 @@ map <leader>8 :b8<CR>
 map <leader>9 :b9<CR>
 
 "NERDTree Settings
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 "VimWiki Settings
 filetype plugin on
