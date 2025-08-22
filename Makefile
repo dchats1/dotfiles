@@ -4,10 +4,7 @@ bash:
 	stow -v --dotfiles --target=${HOME} bash
 
 config:
-	stow -v --dotfiles --target=${HOME} dot-config
-
-tmux:
-	stow -v --dotfiles --target=${HOME} tmux
+	stow -v --dotfiles --target=${HOME}/.config dot-config
 
 vim:
 	stow -v --dotfiles --target=${HOME} vim
