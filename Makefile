@@ -54,3 +54,8 @@ plugins:
 	  git clone https://github.com/vimwiki/vimwiki.git ${HOME}/.vim/pack/vendor/start/vimwiki; \
 		vim -u NONE -c "helptags ${HOME}/.vim/pack/vendor/start/vimwiki/doc" -c q; \
 	fi
+	# vim-terraform
+	if [ ! -d ${HOME}/.vim/pack/vendor/start/vim-terraform/ ]; then \
+	  git clone https://github.com/hashivim/vim-terraform.git ${HOME}/.vim/pack/vendor/start/vim-terraform; \
+		vim -u NONE -c "helptags ${HOME}/.vim/pack/vendor/start/vim-terraform/doc" -c q; \
+	fi
