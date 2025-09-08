@@ -1,7 +1,7 @@
 # No brainer, default to Vim
 export EDITOR="vim"
 
-shopt -s histappend
+shopt -s histappend autocd cdspell
 
 # Source Git Prompt
 if [ -f $HOME/.git-prompt.sh ]; then
@@ -40,6 +40,8 @@ if [ -f /run/.containerenv ]; then
   TOOLBOX_NAME=[$(grep -Po '(?<=^name=")([^"]*)' /run/.containerenv)]
   if [ $TOOLBOX_NAME = "[kube]" ]; then
     source <(kubectl completion bash)
+    source <(flux completion bash)
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
   fi
 fi
 
