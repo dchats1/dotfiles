@@ -8,6 +8,14 @@ if [ -f $HOME/.git-prompt.sh ]; then
   source $HOME/.git-prompt.sh
 fi
 
+# Source Kube-ps1
+if [ -f $HOME/.kube-ps1.sh ]; then
+    source $HOME/.kube-ps1.sh
+fi
+
+# Default kube-ps1 to off
+kubeoff -g
+
 # Source fzf --bash if installed
 [[ -f "/usr/bin/fzf" ]] && eval "$(fzf --bash)"
 
@@ -42,6 +50,7 @@ if [ -f /run/.containerenv ]; then
     source <(kubectl completion bash)
     source <(flux completion bash)
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+    kubeon -g
   fi
 fi
 
@@ -57,4 +66,4 @@ green='\[\e[32m\]'
 GIT_PS1_SHOWDIRTYSTATE="true"
 GIT_PS1_SHOWCOLORHINTS="true"
 GIT_PS1_SHOWUNTRACKEDFILES="true"
-PS1=' \[\e[36m\]\W\[\e[m\] \[\033[38;5;160m\]$TOOLBOX_NAME\[\e[m\]$(__git_ps1 ["%s"])\$ '
+PS1=' \[\e[36m\]\W\[\e[m\] \[\033[38;5;160m\]$TOOLBOX_NAME$(kube_ps1)\[\e[m\]$(__git_ps1 ["%s"])\$ '
