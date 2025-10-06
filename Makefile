@@ -44,11 +44,6 @@ plugins:
 	  git clone https://github.com/vim-airline/vim-airline-themes.git ${HOME}/.vim/pack/vendor/start/vim-airline-themes; \
 		vim -u NONE -c "helptags ${HOME}/.vim/pack/vendor/start/vim-airline-themes/doc" -c q; \
 	fi
-	# vim-fugitive
-	if [ ! -d ${HOME}/.vim/pack/vendor/start/vim-fugitive/ ]; then \
-		git clone https://github.com/tpope/vim-fugitive.git ${HOME}/.vim/pack/vendor/start/vim-fugitive; \
-		vim -u NONE -c "helptags ${HOME}/.vim/pack/vendor/start/fugitive/doc" -c q; \
-	fi
 	# VimWiki
 	if [ ! -d ${HOME}/.vim/pack/vendor/start/vimwiki/ ]; then \
 	  git clone https://github.com/vimwiki/vimwiki.git ${HOME}/.vim/pack/vendor/start/vimwiki; \
