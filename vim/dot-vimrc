@@ -31,7 +31,7 @@ set cursorline
 
 " FZF Settings
 set rtp+=/usr/bin/fzf
-noremap <C-f> :Files<CR>
+noremap <leader>f :Files<CR>
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
