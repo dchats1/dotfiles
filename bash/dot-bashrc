@@ -66,4 +66,5 @@ green='\[\e[32m\]'
 GIT_PS1_SHOWDIRTYSTATE="true"
 GIT_PS1_SHOWCOLORHINTS="true"
 GIT_PS1_SHOWUNTRACKEDFILES="true"
+KUBE_PS1_SYMBOL_ENABLE="false"
 PS1=' \[\e[36m\]\W\[\e[m\] \[\033[38;5;160m\]$TOOLBOX_NAME$(kube_ps1)\[\e[m\]$(__git_ps1 ["%s"])\$ '
