@@ -23,7 +23,7 @@ kubeoff -g
 alias ll='ls -l --color=auto'
 alias g='git'
 alias k='kubectl'
-alias wiki='vim -c VimwikiIndex'
+alias wiki='cd ~/Nextcloud/vimwiki/ && vim -c VimwikiIndex'
 alias yt-dlp-best='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
 
 # Functions
