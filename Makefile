@@ -7,7 +7,7 @@ config:
 	stow -v --dotfiles --target=${HOME}/.config dot-config
 
 PLUGIN_PATH := ${XDG_CONFIG_HOME}/vim/pack/vendor/start/
-PLUGINS := $(shell ls ${XDG_CONFIG_HOME}/vim/pack/vendor/start/)
+PLUGINS := $(shell ls ${PLUGIN_PATH})
 
 update:
 	@for plug in ${PLUGINS}; do \
