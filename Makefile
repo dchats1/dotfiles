@@ -1,13 +1,10 @@
-.PHONY: bash plugins tmux update vim
+.PHONY: bash config plugins update
 
 bash:
 	stow -v --dotfiles --target=${HOME} bash
 
 config:
 	stow -v --dotfiles --target=${HOME}/.config dot-config
-
-vim:
-	stow -v --dotfiles --target=${HOME} vim
 
 PLUGIN_PATH := ${HOME}/.vim/pack/vendor/start/
 PLUGINS := $(shell ls ${HOME}/.vim/pack/vendor/start/)
