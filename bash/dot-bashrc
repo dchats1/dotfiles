@@ -3,6 +3,8 @@ export EDITOR="vim"
 
 shopt -s histappend autocd cdspell
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # Source Git Prompt
 if [ -f $HOME/.git-prompt.sh ]; then
   source $HOME/.git-prompt.sh
