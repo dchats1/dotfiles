@@ -67,7 +67,9 @@ filetype plugin on
 
 let g:vimwiki_list = [{'path': '~/Nextcloud/vimwiki/',
                       \ 'syntax': 'markdown',
-                      \ 'ext': 'md'}]
+                      \ 'ext': 'md',
+                      \ 'diary_rel_path':  '0 - Daily Notes'}]
+map mdn :VimwikiMakeDiaryNote<CR>
 
 " Airline Settings
 let g:airline#extensions#tabline#enabled = 1
